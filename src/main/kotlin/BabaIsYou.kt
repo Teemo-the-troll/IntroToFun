@@ -2,7 +2,7 @@ import java.util.*
 import kotlin.math.abs
 
 fun main() {
-    Scanner(System.`in`).use { sc ->
+   Scanner(System.`in`).use { sc ->
         val input = sc.nextLine()
         if (!input.contains("AB") || !input.contains("BA")) {
             println("NO")
@@ -16,3 +16,4 @@ fun main() {
             println("NO")
     }
 }
+
