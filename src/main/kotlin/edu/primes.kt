@@ -14,12 +14,10 @@ fun main() {
 }
 
 fun isPrime(number: Int): Boolean {
-    var sumOfFactors = 1
     for (i in 2..floor(sqrt(number.toDouble())).toInt()) {
         if (number % i == 0)
-            sumOfFactors += i + (number / i)
+            return false
     }
-    return (sumOfFactors == number)
-
+    return true
 }
 
