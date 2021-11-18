@@ -18,15 +18,12 @@ fun main() {
 
 fun MutableList<Int?>.getNeighbors(elementPosition: Int): List<Int> {
     val output = mutableListOf<Int>()
-    for (i in elementPosition-2..elementPosition+2) {
-        if (i < 0)
-            output.add(0)
-        else this.get(i)?.let { output.add(it) }
+    for (i in elementPosition-2..elementPosition+2) { // take 2 from left, 2 from right
+        if (i != elementPosition) { // we don't want the element itself, idk better solution: martin hate pls
+            if (i < 0 || i > this.size-1 || this[i] == null) // dodging the "indexOutOfBounds" shit
+                output.add(0)
+            else this[i]?.let { output.add(it) } // otherwise add the int value
+        }
     }
-
-     /*this.slice(indicies).map {
-        it ?: 0
-    }*/
     return output;
-
 }
