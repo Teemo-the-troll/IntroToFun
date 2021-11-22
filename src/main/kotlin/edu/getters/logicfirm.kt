@@ -19,15 +19,7 @@ fun main() {
                 break
             val (carId, weight) = input.split(" ").map { n -> n.toInt() }
             val car = fleet[carId - 1]
-            if (car.load + weight < 0) {
-                println("you cant create something out of nothing!")
-            } else if (car.load + weight > car.capacity) {
-                println("you are exceeding this cars max capacity (${car.capacity})")
-            } else {
-                println("load of car ${carId - 1} before change is ${car.load}")
-                car.load += weight
-                println("load of car ${carId - 1} AFTER change is ${car.load}")
-            }
+            car.addLoad(weight)
         }
     }
 
@@ -41,5 +33,18 @@ fun main() {
 
 class Auto(val capacity: Int) {
     var load = 0
+
+    fun addLoad(weight: Int): Unit {
+        if (this.load + weight < 0) {
+            println("you cant create something out of nothing!")
+        } else if (this.load + weight > this.capacity) {
+            println("you are exceeding this cars max capacity (${this.capacity})")
+        } else {
+            println("load before ${this.load}")
+            this.load += weight
+            println("load after ${this.load}")
+        }
+    }
+
 }
 
