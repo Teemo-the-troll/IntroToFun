@@ -1,0 +1,4 @@
+package fiks
+
+class PermitNode {
+}

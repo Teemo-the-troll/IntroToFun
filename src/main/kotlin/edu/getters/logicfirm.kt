@@ -31,10 +31,10 @@ fun main() {
 }
 
 
-class Auto(val capacity: Int) {
+class Auto(private val capacity: Int) {
     var load = 0
 
-    fun addLoad(weight: Int): Unit {
+    fun addLoad(weight: Int) {
         if (this.load + weight < 0) {
             println("you cant create something out of nothing!")
         } else if (this.load + weight > this.capacity) {
@@ -42,7 +42,7 @@ class Auto(val capacity: Int) {
         } else {
             println("load before ${this.load}")
             this.load += weight
-            println("load after ${this.load}")
+            println("load before ${this.load}")
         }
     }
 
