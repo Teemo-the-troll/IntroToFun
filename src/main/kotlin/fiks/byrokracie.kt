@@ -1,7 +1,10 @@
 package fiks
 
+import datastructures.ArrayListQueue
+import java.io.BufferedWriter
 import java.io.File
 import java.io.FileReader
+import java.io.Writer
 import kotlin.math.log
 
 /*
@@ -40,76 +43,105 @@ pocet odpovida zadani, pujde to
 0 0
 */
 fun main() {
-    val lines = File("./src/main/resources/random.txt").readLines().toTypedArray()
+    val lines = File("C:/Users/mikul/Downloads/input.txt").readLines().toTypedArray()
+    val outputFile = File("C:/Users/mikul/Downloads/output.txt")
+    outputFile.createNewFile()
+    val outputWriter = outputFile.bufferedWriter();
     val amountOfInputs = lines[0].toInt()
-    val errorMessage = "ajajaj"
+    val resultSet = mutableListOf<String>()
 
     var currPermitStart = 1
     for (lineNumber in 1..amountOfInputs) {
         val currPermitRules = lines[currPermitStart].split(" ").map { it.toInt() }
-        val currPermitMap: MutableMap<String, MutableList<String>> = mutableMapOf()
+        val outputTree = PermitNode(currPermitRules[2])
         val currAmountOfPermits = currPermitRules[1]
-        var acquiredPermits = mutableListOf<String>()
         if (currAmountOfPermits == 0) { // checks if i can go straight for the finish
-            allRight(currPermitRules[2].toString())
+           // outputWriter.allRight(currPermitRules[2])
+            resultSet.add(allRight(currPermitRules[2]))
             currPermitStart += 1 + currPermitRules[1]
             continue
         }
-
+        var ok = true;
         for (permitLine in 1..currPermitRules[1]) { // prepares the map of needed stuff
-            val currPermitLine = lines[permitLine + currPermitStart].split(" ")
-            if (currPermitMap.containsKey(currPermitLine[0]))
-                currPermitMap[currPermitLine[0]]!!.add(currPermitLine[1])
-            else
-                currPermitMap[currPermitLine[0]] = mutableListOf(currPermitLine[1])
-        }
-
-        if (!currPermitMap.containsKey(currPermitRules[2].toString())) {
-            allRight(currPermitRules[2].toString())
-            currPermitStart += 1 + currPermitRules[1]
-            continue
-        }
-        for (permitNum in 0 until currPermitRules[0]) {
-            if (!currPermitMap.keys.contains(permitNum.toString()))
-                acquiredPermits.add(permitNum.toString())
-        }
-
-        /**
-         * here the bs algorithm starts
-         * */
-        var changed = true
-        var reverseSolution = mutableListOf<String>(currPermitRules[2].toString())
-        while (changed) {
-            var temp = mutableListOf<String>()
-            changed = false
-            for (permit in reverseSolution.toList()) {
-                if (currPermitMap.containsKey(permit)) {
-                    changed = true
-                    for (subkey in currPermitMap[permit]!!) {
-                        if (!reverseSolution.contains(subkey))
-                            temp.add(subkey)
-                    }
-                    currPermitMap.remove(permit)
+            val currPermitLine = lines[permitLine + currPermitStart].split(" ").map { it.toInt() }
+            val node = PermitNode(currPermitLine[1])
+            val currPermit = outputTree.find(currPermitLine[0])
+            if (currPermit != null) {
+                if (!currPermit.ancestorExists(node.value))
+                   currPermit.link(node)
+                else {
+                    ok = false;
+                    //outputWriter.error()
+                    //currPermitStart += 1 + currPermitRules[1]
+                    resultSet.add(error())
+                    break
                 }
             }
-            reverseSolution.addAll(temp.reversed())
         }
-
-        //if ()
-        println(reverseSolution.reversed())
+        if (ok)
+            resultSet.add(allRight(outputTree.forEachLevel()))
+            //outputWriter.allRight(outputTree.forEachLevel())
         currPermitStart += 1 + currPermitRules[1]
 
 
     }
+
+    outputFile.bufferedWriter().use { out ->
+        resultSet.forEach {
+            out.write(it)
+            out.newLine()
+        }
+    }
+
+
 }
 
-fun allRight(value: String) {
-    println("pujde to $value")
+
+
+fun BufferedWriter.error() {
+    this.append("ajajaj")
+}
+fun error(): String {
+    return ("ajajaj")
 }
 
-fun allRight(value: Collection<String>) {
+fun allRight(value: Collection<Int>): String {
     val out = value.toString().replace("[\\[\\],]".toRegex(), "")
-    println("pujde to $out")
+    return "pujde to $out"
+}
+fun allRight(value: Int): String {
+    val out = value.toString().replace("[\\[\\],]".toRegex(), "")
+    return "pujde to $out"
+}
+fun BufferedWriter.allRight(value: Collection<Int>) {
+    val out = value.toString().replace("[\\[\\],]".toRegex(), "")
+     this.append("pujde to $out")
+}
+fun BufferedWriter.allRight(value: String) {
+     this.append("pujde to $value")
+}
+fun BufferedWriter.allRight(value: Int) {
+     this.append("pujde to $value")
+}
+
+
+
+
+fun PermitNode<Int>.forEachLevel(): List<Int> {
+    val output = sequence<Int> {
+        yield(this@forEachLevel.value)                // visits root
+        val queue = ArrayDeque<PermitNode<Int>>()       // new queue?
+        children.forEach {
+            queue.add(it)                        // add every child of root to queue
+        }
+        var node = queue.removeFirstOrNull()          // take first in queue
+        while (node != null) {                        // until node is not null
+            yield(node.value)                         // visit node
+            node.children.forEach { queue.addFirst(it) } // for every node, enqueue its children
+            node = queue.removeFirstOrNull()           // take first node of queue
+        }
+    }
+    return output.toSet().reversed()
 }
 
 
