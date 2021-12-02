@@ -1,6 +1,8 @@
 package datastructures
 
-typealias Visitor<T> = (TreeNode<T>) -> Unit
+typealias TreeNodeVisitor<T> = (TreeNode<T>) -> Unit
+
+
 data class TreeNode<T>(var value: T) {
     val children = mutableListOf<TreeNode<T>>()
 
@@ -8,14 +10,14 @@ data class TreeNode<T>(var value: T) {
         this.children.add(toLink)
     }
 
-    fun forEachDepthFirst(visit: Visitor<T>) {
+    fun forEachDepthFirst(visit: TreeNodeVisitor<T>) {
         visit(this)
         children.forEach {
             it.forEachDepthFirst(visit)
         }
     }
 
-    fun forEachLevel(visit: Visitor<T>) {
+    fun forEachLevel(visit: TreeNodeVisitor<T>) {
         visit(this)                                     // visits root
         val queue = ArrayDeque<TreeNode<T>>()       // new queue?
         children.forEach {
@@ -40,4 +42,19 @@ data class TreeNode<T>(var value: T) {
         return result;
     }
 
+}
+
+open class TreePath<T>(val path: MutableList<TreeNode<T>> = mutableListOf()) {
+
+    fun addToPath(node: TreeNode<T>) {
+        path.add(node)
+    }
+
+    fun getPath(): String {
+        return path.toString()
+    }
+
+    fun print() {
+        path.forEach { print(it.value) }
+    }
 }
