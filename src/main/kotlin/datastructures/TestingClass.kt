@@ -16,11 +16,18 @@ fun main() {
     c.link(e)
     c.link(f)
 
-    d.link(c)
 
    // a.find(2)
-    println(a.forEachLevel())
+    //println(a.forEachDepthFirst { println(it.value) })
+    //println(a.getLeaves())
+    for (leaf in a.getLeaves()) {
+
+        leaf.fromChildToRoot { println(it) }
+    }
+
+
 }
+/*
 
 fun TreeNode<Int>.forEachLevel(): List<Int> {
     val output = sequence<Int> {
@@ -38,3 +45,4 @@ fun TreeNode<Int>.forEachLevel(): List<Int> {
     }
     return output.toList()
 }
+*/

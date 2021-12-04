@@ -1,0 +1,81 @@
+1
+33
+Polstina
+Naurstina
+Livonstina
+Cecenstina
+Urdstina
+Kyrgyzstina
+Vlamstina
+Chorvatstina
+Belorustina
+Moldavstina
+Ugaristina
+Arabstina
+Tatarstina
+Romstina
+Katalanstina
+Kajovstina
+Havajstina
+Retoromanstina
+Svahilstina
+Jidish
+Rwandstina
+Urijstina
+Bambarstina
+Bengalstina
+Afarstina
+E
+Malajstina
+Samojstina
+Barmstina
+Malajalamstina
+Verstina
+Javanstina
+Sumerstina
+44
+5 90 Cecenstina Arabstina Javanstina Retoromanstina Moldavstina
+4 11 Havajstina Urdstina Moldavstina Svahilstina
+4 68 E Moldavstina Romstina Svahilstina
+4 7 Kyrgyzstina Cecenstina Moldavstina Ugaristina
+2 59 Kyrgyzstina Chorvatstina
+5 71 Urijstina Ugaristina Barmstina Malajstina Jidish
+2 41 Cecenstina Malajalamstina
+3 52 Malajstina Sumerstina Cecenstina
+3 95 Samojstina Naurstina Malajstina
+2 40 Urijstina Malajstina
+2 87 Polstina Havajstina
+2 95 Malajstina Barmstina
+3 10 Arabstina Bambarstina Bengalstina
+2 80 Urdstina Afarstina
+5 15 Malajalamstina E Barmstina Arabstina Havajstina
+2 84 Livonstina Belorustina
+2 23 Sumerstina Havajstina
+3 87 Romstina Kyrgyzstina Vlamstina
+3 16 Svahilstina Kyrgyzstina Tatarstina
+3 38 Livonstina Romstina Urdstina
+3 41 Kajovstina Urdstina Malajalamstina
+5 58 Svahilstina Samojstina Livonstina Ugaristina Naurstina
+2 21 Kyrgyzstina Retoromanstina
+3 11 Retoromanstina Arabstina Samojstina
+5 90 Verstina Chorvatstina Bambarstina Romstina Javanstina
+3 24 Javanstina E Malajstina
+5 42 Vlamstina Chorvatstina Svahilstina Arabstina Havajstina
+3 17 Cecenstina Bengalstina Vlamstina
+5 30 Javanstina Barmstina Bambarstina Romstina Kyrgyzstina
+5 91 Ugaristina Vlamstina Svahilstina Sumerstina Rwandstina
+2 28 E Naurstina
+3 53 Havajstina Katalanstina Samojstina
+3 19 Vlamstina Naurstina Ugaristina
+4 39 E Vlamstina Moldavstina Javanstina
+4 36 E Jidish Bengalstina Cecenstina
+2 12 Retoromanstina Rwandstina
+2 88 Kyrgyzstina Javanstina
+3 9 Bambarstina Malajstina Chorvatstina
+2 31 Belorustina Rwandstina
+4 76 Romstina Barmstina Verstina Polstina
+5 20 Cecenstina Belorustina Rwandstina Chorvatstina Sumerstina
+4 47 Livonstina Barmstina Rwandstina Naurstina
+3 20 Samojstina Svahilstina Javanstina
+4 17 Moldavstina Ugaristina E Polstina
+Havajstina Naurstina
