@@ -1,29 +1,18 @@
 package datastructures
 
 fun main() {
-    val a = TreeNode<Int>(0)
-    val b = TreeNode<Int>(1)
-    val c = TreeNode<Int>(2)
-    val d = TreeNode<Int>(3)
-    val e = TreeNode<Int>(4)
-    val f = TreeNode<Int>(5)
+    val testarraylist = ArrayListTest<Int>()
+    testarraylist.add(8)
+    testarraylist.add(156)
+    testarraylist.add(7631)
+    testarraylist.add(45)
+    testarraylist.add(75)
+    val array = testarraylist.toTypedArray()
 
-    a.link(b)
-
-    b.link(c)
-    b.link(d)
-
-    c.link(e)
-    c.link(f)
+    for (x in array)
+        println(x)
 
 
-   // a.find(2)
-    //println(a.forEachDepthFirst { println(it.value) })
-    //println(a.getLeaves())
-    for (leaf in a.getLeaves()) {
-
-        leaf.fromChildToRoot { println(it) }
-    }
 
 
 }
