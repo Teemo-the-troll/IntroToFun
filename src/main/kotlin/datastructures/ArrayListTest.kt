@@ -58,7 +58,6 @@ class ArrayListTest<T> : AbstractList<T>() {
         return index in 0 until realSize
     }
 
-
     @Throws(IndexOutOfBoundsException::class)
     fun set(value: T, index: Int): Boolean {
         if (!checkIndex(index)) {
