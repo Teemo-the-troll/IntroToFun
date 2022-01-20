@@ -5,12 +5,19 @@ import fiks.Translator
 import java.io.BufferedWriter
 import java.io.File
 import java.util.*
+import kotlin.math.abs
 
 fun main() {
     val testset = hashSetOf<test>()
 
-
-
+    for (x in 0..100)
+        for (y in 0..100)
+            testset.add(test(x,y))
+    val intArray = Array(10000) { -1 }
+    for ((index, value) in testset.withIndex())
+        intArray[index] = value.hashCode()
+    for (x in intArray)
+        println(x)
 
 
 
