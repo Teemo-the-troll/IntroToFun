@@ -73,5 +73,4 @@ class ArrayListTest<T> : AbstractList<T>() {
 
     override val size: Int
         get() = this.realSize
-
 }
